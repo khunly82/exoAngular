@@ -19,12 +19,12 @@
             <td>{{item.name.french}}</td>
             <td><app-type class="mx-1" *ngFor="let type of item.type" [type]="type"></app-type></td>
             <td><i class="pi favorite" [ngClass]="{ 'pi-heart-fill' : item.favorite, 'pi-heart' : !item.favorite  }" (click)="item.favorite = !item.favorite"></i></td>
-            <td><p-button (onClick)="select(item)" size="small" [outlined]="true" label="Stats" icon="pi pi-chart-bar" severity="info"></p-button></td>
+            <td><p-button [disabled]="selectedItems.includes(item)" (onClick)="select(item)" size="small" [outlined]="true" label="Stats" icon="pi pi-chart-bar" severity="info"></p-button></td>
         </tr>
     </ng-template>
 </p-table>
 
-<div [ngClass]="{open: selected}">
-    <i *ngIf="selected" class="pi pi-times" (click)="selected=null"></i>
-    <app-details *ngIf="selected" [pokemon]="selected"></app-details>
+<div [ngClass]="{open: selectedItems.length}">
+    <i *ngIf="selectedItems.length" class="pi pi-times" (click)="selectedItems=[]"></i>
+    <app-details *ngIf="selectedItems.length" [pokemons]="selectedItems"></app-details>
 </div>

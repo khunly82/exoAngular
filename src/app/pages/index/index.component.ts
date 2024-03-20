@@ -7,9 +7,9 @@ import { Pokedex } from '../../pokedex';
 })
 export class IndexComponent {
   pokemons: any = Pokedex;
-  selected: any;
+  selectedItems: any[] = [];
 
   select(item: any) {
-    this.selected = item;
+    this.selectedItems = [...this.selectedItems, item];
   }
 }

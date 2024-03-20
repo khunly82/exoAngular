@@ -8,7 +8,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 export class DetailsComponent implements OnChanges {
 
   @Input()
-  pokemon: any;
+  pokemons: any[] = [];
 
   data: any;
 
@@ -18,15 +18,12 @@ export class DetailsComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {  
     this.data = {
-      labels: Object.keys(this.pokemon.base),
-      datasets: [ 
-        ...this.data?.datasets ?? [],
-        { 
-          data: Object.values(this.pokemon.base), 
-          label: this.pokemon.name.french,
-          borderColor: this.colors[(this.currentColorIndex++) % this.colors.length],
-        }
-      ]
+      labels: Object.keys(this.pokemons[0].base),
+      datasets: this.pokemons.map(pokemon => ({
+        data: Object.values(pokemon.base), 
+        label: pokemon.name.french,
+        borderColor: this.colors[(this.currentColorIndex++) % this.colors.length],
+      }))
     }  
   }
 }
