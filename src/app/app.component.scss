@@ -1,0 +1,28 @@
+:host {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid;
+    margin-bottom: 20px;
+    > div {
+        flex: 1;
+        &:nth-child(2) {
+            text-align: center;
+        }
+        &:nth-child(3) {
+            text-align: right;
+        }
+    }
+}
+footer {
+    margin-top: auto;
+    padding: 15px;
+    text-align: center;
+}

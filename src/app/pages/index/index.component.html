@@ -1,0 +1,30 @@
+
+<p-table [value]="pokemons"
+         [paginator]="true"
+         [rows]="25">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>N°</th>
+            <th>Image</th>
+            <th>Nom</th>
+            <th>Types</th>
+            <th>Favori</th>
+            <th>Details</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item>
+        <tr>
+            <td>{{item.id}}</td>
+            <td><img [src]="item.id|pokemonImage" [alt]="item.name"></td>
+            <td>{{item.name.french}}</td>
+            <td><app-type class="mx-1" *ngFor="let type of item.type" [type]="type"></app-type></td>
+            <td><i class="pi favorite" [ngClass]="{ 'pi-heart-fill' : item.favorite, 'pi-heart' : !item.favorite  }" (click)="item.favorite = !item.favorite"></i></td>
+            <td><p-button (onClick)="select(item)" size="small" [outlined]="true" label="Stats" icon="pi pi-chart-bar" severity="info"></p-button></td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<div [ngClass]="{open: selected}">
+    <i *ngIf="selected" class="pi pi-times" (click)="selected=null"></i>
+    <app-details *ngIf="selected" [pokemon]="selected"></app-details>
+</div>

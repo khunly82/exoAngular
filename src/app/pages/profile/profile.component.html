@@ -1,0 +1,15 @@
+<div class="grid gap-2">
+    <div class="col">
+        <p-card header="Infos du dresseur">
+            <app-personal-info [dresseur]="infoDresseur"></app-personal-info>
+        </p-card>
+    </div>
+    <div class="col">
+        <p-card header="Badges">
+            @for (item of infoDresseur.badges; track $index) {
+                <img class="m-2" [src]="item">
+            }
+        </p-card>
+    </div>
+</div>
+

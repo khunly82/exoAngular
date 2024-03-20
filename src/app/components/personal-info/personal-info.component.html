@@ -1,0 +1,15 @@
+<div class="grid">
+    <div class="col">
+        <img [src]="dresseur.photo">
+    </div>
+    <dl class="col">
+        <dt>Nom</dt>
+        <dd>{{ dresseur.nom }}</dd>
+        <dt>Prénom</dt>
+        <dd>{{ dresseur.prenom }}</dd>
+        <dt>Profession</dt>
+        <dd>{{ dresseur.profession | titlecase }}</dd>
+        <dt>Date de naissance</dt>
+        <dd>{{ dresseur.dateNaissance | date : 'dd/MM/yyyy' }}</dd>
+    </dl>    
+</div>
